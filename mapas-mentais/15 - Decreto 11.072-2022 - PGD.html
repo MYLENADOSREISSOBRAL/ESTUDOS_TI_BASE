@@ -122,6 +122,122 @@ h2{font-size:1.05rem;margin:0 0 10px}
   .q .a{display:block!important}
 }
 </style>
+<!-- leitura:inicio -->
+<style>
+#lt-btn{position:fixed;right:16px;bottom:16px;z-index:9999;width:46px;height:46px;border-radius:50%;border:1px solid var(--line,#ccc);background:var(--panel,var(--paper,#fff));color:var(--ink,#111);font:700 16px/1 system-ui,"Segoe UI",Arial,sans-serif;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+#lt-btn:hover{border-color:var(--accent,#2f5fd0)}
+#lt-pn{position:fixed;right:16px;bottom:72px;z-index:9999;width:min(330px,calc(100vw - 32px));max-height:calc(100vh - 100px);overflow:auto;background:var(--panel,var(--paper,#fff));color:var(--ink,#111);border:1px solid var(--line,#ccc);border-radius:12px;padding:14px;box-shadow:0 6px 24px rgba(0,0,0,.22);font:14px/1.4 system-ui,"Segoe UI",Arial,sans-serif}
+#lt-pn[hidden]{display:none}
+body:has(button.localizar.flutua) #lt-btn{bottom:76px}
+body:has(button.localizar.flutua) #lt-pn{bottom:132px}
+#lt-pn h3{margin:0 0 10px;font-size:15px}
+#lt-pn h4{margin:12px 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted,#666)}
+#lt-pn .lt-g{display:flex;flex-wrap:wrap;gap:6px}
+#lt-pn .lt-s{width:38px;height:38px;border-radius:8px;border:1px solid rgba(128,128,128,.45);cursor:pointer;padding:0;font:700 14px/1 Georgia,serif;display:flex;align-items:center;justify-content:center}
+#lt-pn .lt-s.on{outline:3px solid var(--accent,#2f5fd0);outline-offset:1px}
+#lt-pn .lt-s.def{font:600 10px/1 system-ui,sans-serif;background:var(--soft,#eee);color:var(--ink,#111)}
+#lt-pn label.lt-c{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;color:var(--muted,#666)}
+#lt-pn input[type=color]{width:38px;height:28px;padding:0;border:1px solid var(--line,#ccc);border-radius:6px;background:none;cursor:pointer}
+#lt-pn .lt-r{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:8px}
+#lt-pn .lt-ct{font-size:12px;color:var(--muted,#666)}
+#lt-pn .lt-ct.baixo{color:#c0392b;font-weight:600}
+#lt-pn button.lt-x{font:inherit;font-size:13px;padding:5px 10px;border-radius:8px;border:1px solid var(--line,#ccc);background:var(--soft,#eee);color:var(--ink,#111);cursor:pointer}
+@media print{#lt-btn,#lt-pn{display:none!important}}
+</style>
+<script>
+(function(){
+var KEY='mm-leitura', root=document.documentElement;
+var FUNDOS=[
+ ['Branco','#ffffff'],['Creme','#fbf6e9'],['Sépia','#f4ecd8'],['Papel antigo','#ece0c6'],
+ ['Verde suave','#e7f0e3'],['Azul suave','#e5edf5'],['Cinza-claro','#eceff1'],['Lavanda','#efebf6'],
+ ['Cinza-escuro','#2b2f36'],['Sépia escuro','#2a231b'],['Verde-noite','#1a2520'],['Noturno','#121417']];
+var LETRAS=[
+ ['Preto','#111111'],['Grafite','#343a44'],['Marrom','#4a3423'],['Azul-marinho','#1c2a4d'],
+ ['Verde-escuro','#1f3d2b'],['Vinho','#5c1f2c'],['Branco-gelo','#eef1f5'],['Bege claro','#e9dcc0'],
+ ['Âmbar','#f0c674'],['Verde-claro','#b9e0c1'],['Azul-claro','#b7cdf2']];
+var VARS=['--bg','--panel','--paper','--soft','--line','--muted','--code-bg','--ink','color-scheme'];
+function ler(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return {}}}
+function salvar(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+function rgb(h){h=h.replace('#','');return [0,2,4].map(function(i){return parseInt(h.substr(i,2),16)})}
+function lum(h){var c=rgb(h).map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*c[0]+.7152*c[1]+.0722*c[2]}
+function escuro(h){return lum(h)<.18}
+function contraste(a,b){var x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+var st=ler();
+function aplicar(){
+  var r=root.style; VARS.forEach(function(v){r.removeProperty(v)});
+  if(st.bg){
+    var d=escuro(st.bg), mx=d?'#ffffff':'#000000';
+    root.dataset.theme=d?'dark':'light';
+    r.setProperty('--panel',st.bg); r.setProperty('--paper',st.bg);
+    r.setProperty('--bg','color-mix(in srgb,'+st.bg+' '+(d?'92%':'95%')+','+mx+')');
+    r.setProperty('--soft','color-mix(in srgb,'+st.bg+' '+(d?'88%':'93%')+','+mx+')');
+    r.setProperty('--code-bg','color-mix(in srgb,'+st.bg+' '+(d?'88%':'93%')+','+mx+')');
+    r.setProperty('--line','color-mix(in srgb,'+st.bg+' '+(d?'78%':'84%')+','+mx+')');
+    r.setProperty('color-scheme',d?'dark':'light');
+  } else {
+    var th=null; try{th=localStorage.getItem('mm-theme')}catch(e){}
+    if(th) root.dataset.theme=th; else delete root.dataset.theme;
+  }
+  if(st.ink){
+    r.setProperty('--ink',st.ink);
+    r.setProperty('--muted','color-mix(in srgb,'+st.ink+' 72%,var(--panel,var(--paper,#888)))');
+  }
+}
+aplicar();
+function corFundoAtual(){
+  var probe=document.getElementById('lt-pn')||document.body;
+  var c=getComputedStyle(probe).backgroundColor.match(/\d+(\.\d+)?/g);
+  return c?'#'+c.slice(0,3).map(function(v){return ('0'+Math.round(+v).toString(16)).slice(-2)}).join(''):'#ffffff';
+}
+function corTextoAtual(){
+  var c=getComputedStyle(document.body).color.match(/\d+(\.\d+)?/g);
+  return c?'#'+c.slice(0,3).map(function(v){return ('0'+Math.round(+v).toString(16)).slice(-2)}).join(''):'#111111';
+}
+function montar(){
+  aplicar();
+  var b=document.createElement('button'); b.id='lt-btn'; b.type='button'; b.title='Cores de leitura (fundo e letras)'; b.setAttribute('aria-label','Cores de leitura'); b.textContent='Aa';
+  var p=document.createElement('div'); p.id='lt-pn'; p.hidden=true; p.setAttribute('role','dialog'); p.setAttribute('aria-label','Cores de leitura');
+  function grade(lista,chave,ehFundo){
+    var h='<div class="lt-g"><button type="button" class="lt-s def" data-k="'+chave+'" data-v="" title="Padrão do tema">padrão</button>';
+    lista.forEach(function(x){
+      h+='<button type="button" class="lt-s" data-k="'+chave+'" data-v="'+x[1]+'" title="'+x[0]+'" style="'+(ehFundo?'background:'+x[1]+';color:'+(escuro(x[1])?'#eee':'#222'):'background:var(--panel,var(--paper,#fff));color:'+x[1])+'">'+(ehFundo?'':'Aa')+'</button>';
+    });
+    return h+'</div>';
+  }
+  p.innerHTML='<h3>Cores de leitura</h3>'+
+   '<h4>Cor do fundo</h4>'+grade(FUNDOS,'bg',true)+
+   '<label class="lt-c"><input type="color" data-k="bg"> Outra cor de fundo</label>'+
+   '<h4>Cor das letras</h4>'+grade(LETRAS,'ink',false)+
+   '<label class="lt-c"><input type="color" data-k="ink"> Outra cor de letra</label>'+
+   '<div class="lt-r"><span class="lt-ct"></span><button type="button" class="lt-x">Restaurar padrão</button></div>';
+  document.body.appendChild(p); document.body.appendChild(b);
+  function sync(){
+    p.querySelectorAll('.lt-s').forEach(function(s){s.classList.toggle('on',(st[s.dataset.k]||'')===s.dataset.v)});
+    var bg=corFundoAtual(), ink=corTextoAtual();
+    p.querySelector('input[data-k=bg]').value=st.bg||bg;
+    p.querySelector('input[data-k=ink]').value=st.ink||ink;
+    var c=contraste(bg,ink), el=p.querySelector('.lt-ct');
+    el.textContent='Contraste '+c.toFixed(1)+':1'+(c<4.5?' (baixo para leitura)':'');
+    el.classList.toggle('baixo',c<4.5);
+  }
+  function definir(k,v){ if(v) st[k]=v; else delete st[k]; salvar(st); aplicar(); sync(); }
+  p.addEventListener('click',function(e){
+    var s=e.target.closest('.lt-s'); if(s) definir(s.dataset.k,s.dataset.v);
+    if(e.target.closest('.lt-x')){ st={}; salvar(st); aplicar(); sync(); }
+  });
+  p.addEventListener('input',function(e){ if(e.target.type==='color') definir(e.target.dataset.k,e.target.value); });
+  b.addEventListener('click',function(){ p.hidden=!p.hidden; if(!p.hidden) sync(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') p.hidden=true; });
+  document.addEventListener('click',function(e){ if(!p.hidden&&!p.contains(e.target)&&e.target!==b) p.hidden=true; });
+  // O botão ◐ (claro/escuro) das páginas volta o fundo ao padrão do tema escolhido
+  var tb=document.getElementById('themeBtn');
+  if(tb) tb.addEventListener('click',function(){ if(st.bg){ delete st.bg; salvar(st); aplicar(); } });
+  window.addEventListener('storage',function(e){ if(e.key===KEY){ st=ler(); aplicar(); if(!p.hidden) sync(); } });
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',montar); else montar();
+})();
+</script>
+<!-- leitura:fim -->
 </head>
 <body>
 <header>
