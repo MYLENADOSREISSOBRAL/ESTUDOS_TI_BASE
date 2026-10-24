@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decreto nº 11.072/2022</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2330; --muted:#5b6475; --line:#d9dee7; --soft:#eef1f5; --accent:#2f5fd0;
+  --c-topico:#334155; --c-conceito:#2563eb; --c-regra:#0f8a5f; --c-classificacao:#7c3aed; --c-prazo:#c2410c;
+  --c-excecao:#be123c; --c-competencia:#0e7490; --c-sancao:#9f1239; --c-exemplo:#a16207; --c-atencao:#d97706;
+  --mark:#fde68a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11141a; --panel:#1a1f28; --ink:#e6e9ef; --muted:#9aa4b5; --line:#2e3644; --soft:#222936; --accent:#7ea2ff;
+    --c-topico:#a3b1c6; --c-conceito:#7ea2ff; --c-regra:#4cc79a; --c-classificacao:#b69cff; --c-prazo:#ff9a5c;
+    --c-excecao:#ff7a95; --c-competencia:#4fc3d9; --c-sancao:#ff8fae; --c-exemplo:#e8c25a; --c-atencao:#ffb547;
+    --mark:#7a5d00;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11141a; --panel:#1a1f28; --ink:#e6e9ef; --muted:#9aa4b5; --line:#2e3644; --soft:#222936; --accent:#7ea2ff;
+  --c-topico:#a3b1c6; --c-conceito:#7ea2ff; --c-regra:#4cc79a; --c-classificacao:#b69cff; --c-prazo:#ff9a5c;
+  --c-excecao:#ff7a95; --c-competencia:#4fc3d9; --c-sancao:#ff8fae; --c-exemplo:#e8c25a; --c-atencao:#ffb547;
+  --mark:#7a5d00;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;}
+a{color:var(--accent)}
+header{background:var(--panel);border-bottom:1px solid var(--line);padding:14px 16px 0;position:sticky;top:0;z-index:20}
+.hrow{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;max-width:1400px;margin:0 auto}
+h1{font-size:1.25rem;margin:0;line-height:1.25}
+.sub{color:var(--muted);font-size:.9rem;margin-top:2px}
+.hbtns{display:flex;gap:6px;flex-shrink:0}
+button,select,input{font:inherit;color:inherit}
+.btn{background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer;font-size:.85rem;white-space:nowrap}
+.btn:hover{border-color:var(--accent)}
+.btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;max-width:1400px;margin:10px auto 0;scrollbar-width:thin}
+nav.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:8px 12px;cursor:pointer;color:var(--muted);white-space:nowrap;font-size:.9rem}
+nav.tabs button.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+main{max-width:1400px;margin:0 auto;padding:16px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
+.intro{color:var(--ink)}
+.intro .meta{color:var(--muted);font-size:.85rem;margin-top:6px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.chip{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;white-space:nowrap;font-size:.85rem}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.mapsel{display:none;width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel)}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0}
+.toolbar input{flex:1 1 200px;min-width:0;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel)}
+.toolbar .sep{width:1px;height:22px;background:var(--line);margin:0 4px}
+.hits{color:var(--muted);font-size:.8rem}
+.maptitle{font-size:1.05rem;font-weight:600;margin:4px 0 8px}
+/* outline */
+ul.ol{list-style:none;margin:0;padding:0}
+ul.ol ul.ol{margin-left:14px;padding-left:12px;border-left:1px dashed var(--line)}
+.on-row{display:flex;gap:6px;align-items:flex-start;padding:3px 0}
+.tog{width:20px;height:20px;flex-shrink:0;border:0;background:none;cursor:pointer;color:var(--muted);padding:0;margin-top:2px;font-size:.75rem}
+.tog.none{visibility:hidden}
+.box{border-left:4px solid var(--c);padding:3px 8px;border-radius:4px;background:color-mix(in srgb,var(--c) 8%,transparent);min-width:0;flex:1}
+.lvl0>.on-row>.box{font-size:1.05rem;font-weight:700}
+.lvl1>.on-row>.box{font-weight:600}
+.t .sym{color:var(--c);font-weight:700;margin-right:4px}
+.d{color:var(--muted);font-size:.86rem;margin-top:1px}
+.ref{display:inline-block;font-size:.72rem;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:0 5px;margin-left:6px;color:var(--muted);white-space:nowrap;vertical-align:1px}
+.ext{display:inline-block;font-size:.7rem;border:1px dashed var(--c-atencao);color:var(--c-atencao);border-radius:6px;padding:0 5px;margin-left:6px;vertical-align:1px}
+.cnt{font-size:.72rem;color:var(--muted);margin-left:6px}
+mark{background:var(--mark);color:inherit;border-radius:2px}
+/* mind map */
+.mmwrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px;max-height:78vh}
+.mm{display:inline-block;min-width:100%}
+.mm ul{list-style:none;margin:0;padding:0 0 0 28px;position:relative}
+.mm li{position:relative;display:flex;align-items:center;padding:4px 0}
+.mm>ul{padding-left:0}
+.mm ul ul::before{content:"";position:absolute;left:0;top:50%;width:14px;border-top:2px solid var(--line)}
+.mm ul ul>li::before{content:"";position:absolute;left:-14px;top:0;bottom:0;border-left:2px solid var(--line)}
+.mm ul ul>li:first-child::before{top:50%}
+.mm ul ul>li:last-child::before{bottom:50%}
+.mm ul ul>li:only-child::before{display:none}
+.mm ul ul>li::after{content:"";position:absolute;left:-14px;top:50%;width:14px;border-top:2px solid var(--line)}
+.mm .node{max-width:280px;min-width:120px;border:1.5px solid var(--c);border-radius:10px;padding:5px 9px;background:var(--panel);box-shadow:0 1px 0 var(--line);cursor:default;flex-shrink:0;font-size:.86rem}
+.mm .node.has{cursor:pointer}
+.mm .node.root{background:var(--c);color:#fff;font-weight:700;font-size:.95rem}
+.mm .node.root .sym,.mm .node.root .ref{color:#fff}
+.mm .node .d{font-size:.78rem}
+.mm .node .more{font-size:.72rem;color:var(--c);font-weight:600;margin-left:4px}
+.mm .kids{display:flex;flex-direction:column}
+/* lists */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.leg{display:flex;gap:10px;align-items:flex-start;padding:8px;border:1px solid var(--line);border-radius:10px}
+.leg .sw{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;background:var(--c);flex-shrink:0}
+.leg small{color:var(--muted)}
+.item{padding:10px 12px;border:1px solid var(--line);border-left:4px solid var(--c,var(--accent));border-radius:8px;margin-bottom:8px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--soft)}
+.tblwrap{overflow-x:auto;margin-bottom:16px}
+.st{display:inline-block;border-radius:6px;padding:0 8px;font-size:.78rem;font-weight:600;color:#fff}
+.st.ok{background:var(--c-regra)} .st.parcial{background:var(--c-atencao)} .st.nao{background:var(--c-excecao)}
+.q{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:var(--panel)}
+.q .a{display:none;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.q.open .a{display:block}
+.q .qrow{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+.q .qbtns{display:flex;gap:4px;flex-shrink:0}
+.q.ok{border-left:4px solid var(--c-regra)} .q.bad{border-left:4px solid var(--c-excecao)}
+.score{color:var(--muted);font-size:.85rem;margin-bottom:10px}
+h2{font-size:1.05rem;margin:0 0 10px}
+.hidden{display:none!important}
+@media (max-width:700px){
+  body{font-size:14px}
+  .chips{display:none} .mapsel{display:block}
+  h1{font-size:1.05rem}
+  .mm .node{max-width:200px;min-width:90px}
+  ul.ol ul.ol{margin-left:6px;padding-left:8px}
+}
+@media print{
+  header{position:static} nav.tabs,.toolbar,.hbtns,.chips,.mapsel{display:none!important}
+  .tab{display:block!important} .mmwrap{max-height:none;overflow:visible}
+  .q .a{display:block!important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <div><h1 id="h-title"></h1><div class="sub" id="h-sub"></div></div>
+    <div class="hbtns"><a class="btn" href="../index.html#legislacao" title="Voltar ao Caderno de Revisão">☰ Caderno de Revisão</a><button class="btn" id="themeBtn" title="Alternar tema">◐</button></div>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+<main id="main"></main>
+<script id="data" type="application/json">{"id": "mm-d11072", "titulo": "Decreto nº 11.072/2022", "subtitulo": "Programa de Gestão e Desempenho (PGD) da administração pública federal direta, autárquica e fundacional", "fonte": "D11072.pdf", "versao_fonte": "Texto original do Decreto nº 11.072, de 17/05/2022 (DOU de 18.5.2022), conforme o PDF; sem anotações de alterações posteriores. Vigência: 1º/06/2022.", "visao_geral": "O Decreto disciplina o PGD, instrumento de gestão focado na entrega por resultados e na qualidade dos serviços, aplicável à administração federal direta, autárquica e fundacional integrante do Sipec e do Siorg (servidores efetivos e comissionados, empregados públicos, temporários e estagiários; não militares). Trata da autorização e instituição do PGD por portaria, das modalidades presencial e teletrabalho (integral ou parcial), da seleção de participantes, do plano de trabalho, do retorno ao presencial, do teletrabalho no exterior, de diárias, adicional noturno e adicionais vedados, além de normas complementares, transitórias e vigência.", "mapas": [{"id": "geral", "titulo": "Mapa geral", "raiz": {"t": "PGD – Decreto 11.072/2022", "tipo": "topico", "filhos": [{"t": "Objeto e âmbito", "tipo": "topico", "ref": "Arts. 1º e 2º", "filhos": [{"t": "Instrumento de gestão com foco em entregas e resultados", "tipo": "conceito", "ref": "Art. 1º, p.ú."}, {"t": "Direta, autárquica e fundacional (Sipec e Siorg)", "tipo": "regra", "ref": "Art. 2º"}, {"t": "Não se aplica aos militares das Forças Armadas", "tipo": "excecao", "ref": "Art. 2º, § 2º"}]}, {"t": "Autorização, instituição e manutenção", "tipo": "topico", "ref": "Arts. 3º a 5º", "filhos": [{"t": "Ato discricionário; autorizado por Ministros/dirigentes máximos", "tipo": "competencia", "ref": "Art. 3º"}, {"t": "Instituído por portaria da autoridade máxima, vedada delegação", "tipo": "regra", "ref": "Art. 4º"}, {"t": "No interesse da administração; não é direito do agente", "tipo": "conceito", "ref": "Art. 5º"}]}, {"t": "Modalidades, seleção e compatibilidade", "tipo": "topico", "ref": "Arts. 6º a 8º", "filhos": [{"t": "Presencial ou teletrabalho", "tipo": "classificacao", "ref": "Art. 6º"}, {"t": "Seleção impessoal se interessados > vagas", "tipo": "regra", "ref": "Art. 7º"}, {"t": "Respeita atribuições do cargo e jornada", "tipo": "regra", "ref": "Art. 8º"}]}, {"t": "Teletrabalho e retorno ao presencial", "tipo": "topico", "ref": "Arts. 9º e 10", "filhos": [{"t": "Acordo mútuo; integral ou parcial; estrutura custeada pelo agente", "tipo": "regra", "ref": "Art. 9º"}, {"t": "Retorno em 30 dias se excluído ou PGD suspenso/revogado", "tipo": "prazo", "ref": "Art. 10"}]}, {"t": "Plano de trabalho", "tipo": "topico", "ref": "Art. 11", "filhos": [{"t": "Datas, atividades, metas/prazos e termo de ciência", "tipo": "classificacao", "ref": "Art. 11"}]}, {"t": "Teletrabalho no exterior", "tipo": "topico", "ref": "Art. 12", "filhos": [{"t": "Só efetivos pós-estágio probatório, regime integral, prazo determinado", "tipo": "excecao", "ref": "Art. 12, I, II e VI"}, {"t": "Revogação: 2 meses para retornar", "tipo": "prazo", "ref": "Art. 12, § 2º"}, {"t": "Exceções ao inciso VIII limitadas a 10% das vagas", "tipo": "prazo", "ref": "Art. 12, § 8º"}]}, {"t": "Direitos e vantagens", "tipo": "topico", "ref": "Arts. 13 a 15", "filhos": [{"t": "Diárias e passagens: ponto de referência", "tipo": "regra", "ref": "Art. 13"}, {"t": "Adicional noturno não devido, salvo exceção", "tipo": "excecao", "ref": "Art. 14"}, {"t": "Teletrabalho integral: vedados insalubridade, periculosidade etc.", "tipo": "excecao", "ref": "Art. 15"}]}, {"t": "Normas complementares, transitórias e vigência", "tipo": "topico", "ref": "Arts. 16 a 20", "filhos": [{"t": "Órgãos centrais do Sipec e Siorg editam atos complementares", "tipo": "competencia", "ref": "Art. 16"}, {"t": "Teletrabalho no exterior: adequação até 1º/12/2022", "tipo": "prazo", "ref": "Art. 18"}, {"t": "Vigência: 1º/06/2022", "tipo": "prazo", "ref": "Art. 20"}]}]}}, {"id": "objeto-instituicao", "titulo": "Objeto, âmbito, autorização e instituição do PGD (arts. 1º–5º)", "raiz": {"t": "PGD: objeto, alcance e instituição", "tipo": "topico", "ref": "Arts. 1º a 5º", "filhos": [{"t": "Objeto", "tipo": "topico", "ref": "Art. 1º", "filhos": [{"t": "PGD da administração federal direta, autárquica e fundacional", "tipo": "regra", "d": "O caput do art. 1º, no PDF, grafa 'funcional' (provável erro material por 'fundacional').", "ref": "Art. 1º, caput"}, {"t": "Instrumento de gestão: desenvolvimento e mensuração das atividades", "tipo": "conceito", "d": "Foco na entrega por resultados e na qualidade dos serviços prestados à sociedade.", "ref": "Art. 1º, parágrafo único"}]}, {"t": "Âmbito de aplicação", "tipo": "topico", "ref": "Art. 2º", "filhos": [{"t": "Administração direta, autárquica e fundacional do Sipec e do Siorg", "tipo": "regra", "ref": "Art. 2º, caput"}, {"t": "Agentes públicos abrangidos", "tipo": "classificacao", "ref": "Art. 2º, § 1º", "filhos": [{"t": "Servidores ocupantes de cargo efetivo", "tipo": "classificacao", "ref": "Art. 2º, § 1º, I"}, {"t": "Servidores ocupantes de cargo em comissão", "tipo": "classificacao", "ref": "Art. 2º, § 1º, II"}, {"t": "Empregados públicos em exercício na direta, autárquica e fundacional", "tipo": "classificacao", "ref": "Art. 2º, § 1º, III"}, {"t": "Contratados por tempo determinado (Lei 8.745/1993)", "tipo": "classificacao", "ref": "Art. 2º, § 1º, IV"}, {"t": "Estagiários (Lei 11.788/2008)", "tipo": "classificacao", "ref": "Art. 2º, § 1º, V"}]}, {"t": "Não se aplica aos militares das Forças Armadas", "tipo": "excecao", "ref": "Art. 2º, § 2º"}]}, {"t": "Autorização para instituir", "tipo": "topico", "ref": "Art. 3º", "filhos": [{"t": "Quem autoriza: Ministros, dirigentes de órgãos subordinados ao PR, autoridades máximas das entidades", "tipo": "competencia", "d": "Para atividades avaliadas pela efetividade e qualidade das entregas.", "ref": "Art. 3º, caput"}, {"t": "Controle de assiduidade/pontualidade substituído por controle de entregas", "tipo": "regra", "d": "Independentemente da modalidade, conforme atos do art. 16.", "ref": "Art. 3º, § 1º"}, {"t": "Instituição é ato discricionário (oportunidade e conveniência)", "tipo": "conceito", "ref": "Art. 3º, § 2º"}, {"t": "Suspensão ou revogação fundamentada por razões técnicas ou de conveniência", "tipo": "regra", "ref": "Art. 3º, § 3º"}, {"t": "Delegação do caput e § 3º: dois níveis inferiores (gestão de pessoas), vedada subdelegação", "tipo": "competencia", "ref": "Art. 3º, § 4º"}]}, {"t": "Instituição e manutenção", "tipo": "topico", "ref": "Art. 4º", "filhos": [{"t": "Em cada autarquia, fundação ou unidade da direta de nível ≥ Secretaria", "tipo": "regra", "ref": "Art. 4º, caput"}, {"t": "Por portaria da autoridade máxima, VEDADA a delegação", "tipo": "excecao", "ref": "Art. 4º, caput"}, {"t": "Conteúdo mínimo da portaria", "tipo": "classificacao", "ref": "Art. 4º, I a VI", "filhos": [{"t": "Tipos de atividades incluídas", "tipo": "regra", "ref": "Art. 4º, I"}, {"t": "Quantitativo de vagas", "tipo": "regra", "ref": "Art. 4º, II"}, {"t": "Vedações à participação, se houver", "tipo": "regra", "ref": "Art. 4º, III"}, {"t": "Eventual produtividade adicional para teletrabalho", "tipo": "regra", "ref": "Art. 4º, IV"}, {"t": "Conteúdo do termo de ciência e responsabilidade", "tipo": "regra", "d": "Firmado entre participante e chefia imediata.", "ref": "Art. 4º, V"}, {"t": "Antecedência mínima nas convocações presenciais", "tipo": "regra", "ref": "Art. 4º, VI"}]}, {"t": "Gabinetes de Ministro: competência do Chefe de Gabinete", "tipo": "competencia", "ref": "Art. 4º, § 1º"}, {"t": "Não pode prejudicar a capacidade plena de atendimento ao público", "tipo": "excecao", "d": "Público interno e externo.", "ref": "Art. 4º, § 2º"}, {"t": "Divulgar em sítio oficial a portaria e os resultados", "tipo": "regra", "ref": "Art. 4º, § 3º"}, {"t": "Exige sistema informatizado de acompanhamento e controle", "tipo": "regra", "ref": "Art. 4º, § 4º"}, {"t": "Informações ao órgão central do Sipec e do Siorg", "tipo": "regra", "d": "Conforme normas desses órgãos centrais.", "ref": "Art. 4º, §§ 5º e 6º"}, {"t": "Autoridades do art. 3º asseguram os §§ 4º e 5º", "tipo": "competencia", "ref": "Art. 4º, § 7º"}]}, {"t": "Instituição e manutenção no interesse da administração; não é direito do agente", "tipo": "conceito", "ref": "Art. 5º"}]}}, {"id": "modalidades-teletrabalho", "titulo": "Modalidades, seleção, teletrabalho, retorno e plano de trabalho (arts. 6º–11)", "raiz": {"t": "Modalidades e regras de participação", "tipo": "topico", "ref": "Arts. 6º a 11", "filhos": [{"t": "Modalidades", "tipo": "classificacao", "ref": "Art. 6º", "filhos": [{"t": "Presencial", "tipo": "classificacao", "d": "Pode ser tornada obrigatória pelas autoridades do art. 3º.", "ref": "Art. 6º, I e parágrafo único"}, {"t": "Teletrabalho (integral ou parcial)", "tipo": "classificacao", "ref": "Art. 6º, II; art. 9º, II"}]}, {"t": "Seleção para adesão", "tipo": "topico", "ref": "Art. 7º", "filhos": [{"t": "Se interessados > vagas: dirigente da unidade seleciona de modo impessoal", "tipo": "regra", "d": "Com base nas atividades a desempenhar e na experiência dos interessados.", "ref": "Art. 7º, caput"}, {"t": "Outros critérios específicos fundamentados", "tipo": "regra", "ref": "Art. 7º, § 1º"}, {"t": "Dirigente estabelece e divulga critérios técnicos de adesão", "tipo": "competencia", "ref": "Art. 7º, § 2º"}]}, {"t": "Participação considera atribuições do cargo e respeita a jornada", "tipo": "regra", "d": "Em qualquer modalidade.", "ref": "Art. 8º"}, {"t": "Regras especiais do teletrabalho", "tipo": "topico", "ref": "Art. 9º", "filhos": [{"t": "Acordo mútuo, registrado no termo de ciência e responsabilidade", "tipo": "regra", "ref": "Art. 9º, I"}, {"t": "Execução integral ou parcial", "tipo": "classificacao", "ref": "Art. 9º, II"}, {"t": "Compatibilidade com as atividades e ausência de prejuízo", "tipo": "regra", "ref": "Art. 9º, III"}, {"t": "Estrutura física e tecnológica providenciada e custeada pelo agente", "tipo": "regra", "d": "Deve constar expressamente do termo de ciência e responsabilidade.", "ref": "Art. 9º, IV e § 5º"}, {"t": "Disponível para contato por todos os meios no período definido pela chefia", "tipo": "regra", "d": "Observado o horário de funcionamento; deve informar telefone fixo ou móvel de livre divulgação.", "ref": "Art. 9º, V e § 6º"}, {"t": "Não pode aumentar despesa da administração", "tipo": "excecao", "ref": "Art. 9º, § 7º"}, {"t": "Alteração para teletrabalho de vínculos especiais", "tipo": "topico", "ref": "Art. 9º, §§ 1º a 4º", "filhos": [{"t": "Temporários: aditivo contratual (Lei 8.745)", "tipo": "regra", "ref": "Art. 9º, § 1º"}, {"t": "Estagiários: acordo entre instituição de ensino, concedente, estagiário e representante", "tipo": "regra", "d": "Representante/assistente legal dispensado se emancipado ou com 18 anos ou mais; deve constar do termo de compromisso e ser compatível com as atividades escolares.", "ref": "Art. 9º, §§ 2º e 3º"}, {"t": "Empregados de estatais: autorização da entidade de origem", "tipo": "regra", "ref": "Art. 9º, § 4º"}]}]}, {"t": "Retorno ao trabalho presencial", "tipo": "topico", "ref": "Art. 10", "filhos": [{"t": "Retorno obrigatório em 30 dias", "tipo": "prazo", "ref": "Art. 10, caput"}, {"t": "Hipóteses", "tipo": "classificacao", "ref": "Art. 10, I e II", "filhos": [{"t": "Exclusão do teletrabalho ou do PGD", "tipo": "regra", "ref": "Art. 10, I"}, {"t": "Suspensão ou revogação do PGD", "tipo": "regra", "d": "Prazo pode ser reduzido mediante justificativa das autoridades do art. 4º.", "ref": "Art. 10, II e § 1º"}]}, {"t": "Participante pode voltar a qualquer momento, independentemente do interesse da administração", "tipo": "regra", "ref": "Art. 10, § 2º"}, {"t": "Órgão pode exigir comunicação com 30 dias de antecedência", "tipo": "prazo", "ref": "Art. 10, § 3º"}, {"t": "Mantém as atividades até o retorno efetivo", "tipo": "regra", "ref": "Art. 10, § 4º"}]}, {"t": "Plano de trabalho (adesão)", "tipo": "topico", "ref": "Art. 11", "filhos": [{"t": "Firmado pelo agente e sua chefia imediata", "tipo": "competencia", "ref": "Art. 11, caput"}, {"t": "Conteúdo mínimo", "tipo": "classificacao", "ref": "Art. 11, I a IV", "filhos": [{"t": "Data de início e de término", "tipo": "regra", "ref": "Art. 11, I"}, {"t": "Atividades a executar", "tipo": "regra", "ref": "Art. 11, II"}, {"t": "Metas e prazos", "tipo": "regra", "ref": "Art. 11, III"}, {"t": "Termo de ciência e responsabilidade", "tipo": "regra", "ref": "Art. 11, IV"}]}, {"t": "Dever de comunicar afastamentos, licenças e impedimentos à chefia", "tipo": "regra", "d": "Para adequação de metas e prazos ou redistribuição das atividades.", "ref": "Art. 11, parágrafo único"}]}]}}, {"id": "exterior", "titulo": "Teletrabalho no exterior (art. 12)", "raiz": {"t": "Teletrabalho com residência no exterior", "tipo": "topico", "ref": "Art. 12", "filhos": [{"t": "Requisitos cumulativos (além dos gerais)", "tipo": "classificacao", "ref": "Art. 12, I a VIII", "filhos": [{"t": "Servidor federal efetivo que concluiu o estágio probatório", "tipo": "regra", "ref": "Art. 12, I"}, {"t": "Regime de execução integral", "tipo": "regra", "ref": "Art. 12, II"}, {"t": "No interesse da administração", "tipo": "regra", "ref": "Art. 12, III"}, {"t": "PGD instituído na unidade de exercício", "tipo": "regra", "ref": "Art. 12, IV"}, {"t": "Autorização específica da autoridade do art. 3º", "tipo": "competencia", "d": "Delegável ao nível imediatamente inferior, vedada subdelegação.", "ref": "Art. 12, V"}, {"t": "Por prazo determinado", "tipo": "regra", "ref": "Art. 12, VI"}, {"t": "Mantidas regras de vantagens como se no território nacional", "tipo": "regra", "ref": "Art. 12, VII"}, {"t": "Em substituição a", "tipo": "classificacao", "ref": "Art. 12, VIII", "filhos": [{"t": "Afastamento para estudo no exterior (art. 95, Lei 8.112), se compatível com o cargo", "tipo": "classificacao", "ref": "Art. 12, VIII, a"}, {"t": "Exercício provisório (art. 84, § 2º, Lei 8.112)", "tipo": "classificacao", "ref": "Art. 12, VIII, b"}, {"t": "Acompanhamento de cônjuge afastado (arts. 95 e 96)", "tipo": "classificacao", "ref": "Art. 12, VIII, c"}, {"t": "Remoção por saúde com tratamento no exterior (art. 36, p.ú., III, b)", "tipo": "classificacao", "ref": "Art. 12, VIII, d"}, {"t": "Licença para acompanhar cônjuge não servidor deslocado ao exterior (art. 84)", "tipo": "classificacao", "d": "Requerente deve comprovar o vínculo empregatício do cônjuge no exterior.", "ref": "Art. 12, VIII, e, e § 10"}]}]}, {"t": "Revogação da autorização", "tipo": "topico", "ref": "Art. 12, §§ 1º a 4º", "filhos": [{"t": "Por razões técnicas ou de conveniência, decisão fundamentada", "tipo": "regra", "ref": "Art. 12, § 1º"}, {"t": "Prazo de 2 meses para retornar", "tipo": "prazo", "d": "Ao presencial ou ao teletrabalho no território nacional; reduzível por justificativa das autoridades do art. 4º.", "ref": "Art. 12, §§ 2º e 3º"}, {"t": "Mantém as atividades até o retorno efetivo", "tipo": "regra", "ref": "Art. 12, § 4º"}]}, {"t": "Empregados públicos em situações análogas", "tipo": "topico", "ref": "Art. 12, § 5º", "filhos": [{"t": "Empregados de estatais com cargo em comissão, se a origem autorizar", "tipo": "regra", "ref": "Art. 12, § 5º, I"}, {"t": "Empregados dos quadros permanentes da direta, autárquica e fundacional", "tipo": "regra", "ref": "Art. 12, § 5º, II"}]}, {"t": "Fuso horário é responsabilidade do agente", "tipo": "regra", "d": "Para cumprir a jornada fixada pelo órgão.", "ref": "Art. 12, § 6º"}, {"t": "Autoridade do art. 3º pode substituir o inciso VIII por outros critérios", "tipo": "excecao", "ref": "Art. 12, § 7º"}, {"t": "Exceções ao inciso VIII: máx. 10% das vagas", "tipo": "prazo", "ref": "Art. 12, § 8º"}, {"t": "Prazo do teletrabalho no exterior", "tipo": "topico", "ref": "Art. 12, § 9º", "filhos": [{"t": "Outros critérios (§ 7º): até 3 anos, renovável por período igual ou inferior", "tipo": "prazo", "ref": "Art. 12, § 9º, I"}, {"t": "Hipóteses do inciso VIII: duração do fato justificador", "tipo": "prazo", "ref": "Art. 12, § 9º, II"}]}]}}, {"id": "vantagens-finais", "titulo": "Diárias, adicionais, normas complementares e transitórias (arts. 13–20)", "raiz": {"t": "Vantagens pecuniárias e disposições finais", "tipo": "topico", "ref": "Arts. 13 a 20", "filhos": [{"t": "Diárias e passagens", "tipo": "topico", "ref": "Art. 13", "filhos": [{"t": "Deslocamento eventual no interesse da administração gera diárias e passagens", "tipo": "regra", "ref": "Art. 13, caput"}, {"t": "Referência: local de onde trabalha remotamente, ou sede se for mais barato", "tipo": "regra", "ref": "Art. 13, I e II"}, {"t": "Sem reembolso/diárias para comparecer à unidade de exercício", "tipo": "excecao", "d": "Teletrabalhador que reside em localidade diversa da sede.", "ref": "Art. 13, parágrafo único"}]}, {"t": "Adicional noturno", "tipo": "topico", "ref": "Art. 14", "filhos": [{"t": "Regra: não devido aos participantes do PGD", "tipo": "excecao", "ref": "Art. 14, caput"}, {"t": "Exceção: atividade comprovada entre 22h e 5h", "tipo": "prazo", "d": "Exige necessidade comprovada da administração e autorização da chefia imediata; vale mesmo para atividade remota.", "ref": "Art. 14, parágrafo único"}]}, {"t": "Vedados no teletrabalho integral", "tipo": "topico", "ref": "Art. 15", "filhos": [{"t": "Adicionais de insalubridade, periculosidade ou irradiação ionizante", "tipo": "excecao", "ref": "Art. 15, I"}, {"t": "Gratificação por atividades com raios X ou substâncias radioativas", "tipo": "excecao", "ref": "Art. 15, II"}, {"t": "A vedação é só para regime INTEGRAL", "tipo": "atencao", "ref": "Art. 15, caput"}]}, {"t": "Atos complementares: órgãos centrais do Sipec e do Siorg", "tipo": "competencia", "ref": "Art. 16"}, {"t": "Normas transitórias", "tipo": "topico", "ref": "Arts. 17 e 18", "filhos": [{"t": "Aplica-se às situações em curso", "tipo": "regra", "ref": "Art. 17"}, {"t": "Teletrabalho no exterior: adequar-se até 1º/12/2022 ou voltar ao País", "tipo": "prazo", "ref": "Art. 18"}]}, {"t": "Revogações", "tipo": "topico", "ref": "Art. 19", "filhos": [{"t": "§ 6º do art. 6º do Decreto 1.590/1995", "tipo": "regra", "ref": "Art. 19, I"}, {"t": "Art. 5º do Decreto 10.789/2021", "tipo": "regra", "ref": "Art. 19, II"}]}, {"t": "Vigência: 1º de junho de 2022", "tipo": "prazo", "ref": "Art. 20"}]}}], "comparacoes": [{"titulo": "Presencial × Teletrabalho (parcial e integral) no PGD", "colunas": ["Aspecto", "Presencial", "Teletrabalho"], "linhas": [["Previsão", "Art. 6º, I", "Art. 6º, II; regime integral ou parcial (art. 9º, II)"], ["Obrigatoriedade", "Pode ser tornada obrigatória pelas autoridades do art. 3º", "Depende de acordo mútuo (art. 9º, I)"], ["Controle", "Entregas e resultados (art. 3º, § 1º)", "Entregas e resultados; eventual produtividade adicional (art. 4º, IV)"], ["Estrutura", "Do órgão", "Providenciada e custeada pelo agente (art. 9º, IV)"], ["Adicionais ocupacionais", "Não vedados pelo Decreto", "Vedados no regime integral (art. 15)"], ["Exterior", "Não se aplica", "Só em regime integral, com requisitos do art. 12"]]}, {"titulo": "Prazos de retorno", "colunas": ["Situação", "Prazo", "Base"], "linhas": [["Exclusão do teletrabalho/PGD ou suspensão/revogação do PGD", "30 dias (reduzível na suspensão/revogação)", "Art. 10"], ["Retorno voluntário", "A qualquer momento; órgão pode exigir aviso de 30 dias", "Art. 10, §§ 2º e 3º"], ["Revogação do teletrabalho no exterior", "2 meses (reduzível)", "Art. 12, §§ 2º e 3º"], ["Teletrabalho no exterior preexistente", "Adequação até 1º/12/2022", "Art. 18"]]}], "pegadinhas": [{"texto": "O Decreto NÃO se aplica aos militares das Forças Armadas, mas aplica-se a estagiários e temporários.", "ref": "Art. 2º"}, {"texto": "A autorização para instituir (art. 3º) é delegável a dois níveis; já a portaria de instituição (art. 4º) é da autoridade máxima, VEDADA a delegação.", "ref": "Arts. 3º, § 4º, e 4º"}, {"texto": "O PGD não constitui direito do agente público; é instituído no interesse da administração e é ato discricionário.", "ref": "Arts. 3º, § 2º, e 5º"}, {"texto": "A modalidade PRESENCIAL pode ser tornada obrigatória; o teletrabalho depende de acordo mútuo.", "ref": "Arts. 6º, p.ú., e 9º, I"}, {"texto": "A estrutura física e tecnológica do teletrabalho é custeada pelo AGENTE, e isso consta do termo de ciência e responsabilidade.", "ref": "Art. 9º, IV e § 5º"}, {"texto": "Retorno ao presencial: 30 dias (exclusão ou suspensão/revogação); no exterior, revogação dá 2 meses.", "ref": "Arts. 10 e 12, § 2º"}, {"texto": "O participante pode voltar ao presencial a qualquer momento, independentemente do interesse da administração (podendo ser exigido aviso de 30 dias).", "ref": "Art. 10, §§ 2º e 3º"}, {"texto": "Teletrabalho no exterior: só servidor EFETIVO com estágio probatório concluído, em regime INTEGRAL e por prazo determinado.", "ref": "Art. 12, I, II e VI"}, {"texto": "Teletrabalho no exterior por 'outros critérios': até 3 anos, renovável por período igual ou inferior; limitado a 10% das vagas.", "ref": "Art. 12, §§ 8º e 9º"}, {"texto": "Autorização para o exterior: delegável só ao nível imediatamente inferior (um nível), vedada subdelegação.", "ref": "Art. 12, V"}, {"texto": "Adicional noturno não é devido, salvo atividade comprovada entre 22h e 5h com necessidade e autorização da chefia.", "ref": "Art. 14"}, {"texto": "Insalubridade, periculosidade, irradiação ionizante e gratificação de raios X são vedadas apenas no teletrabalho INTEGRAL.", "ref": "Art. 15"}, {"texto": "Teletrabalhador que mora fora da sede não recebe diárias/passagens para comparecer à unidade de exercício.", "ref": "Art. 13, p.ú."}, {"texto": "O plano de trabalho é firmado entre o agente e a chefia IMEDIATA, e inclui o termo de ciência e responsabilidade.", "ref": "Art. 11"}, {"texto": "A unidade da direta que institui o PGD deve ter nível não inferior ao de Secretaria; nos Gabinetes de Ministro, quem institui é o Chefe de Gabinete.", "ref": "Art. 4º, caput e § 1º"}, {"texto": "Estagiário: acordo com representante legal, exceto se emancipado ou com 18 anos ou mais.", "ref": "Art. 9º, § 2º"}, {"texto": "Empregado de estatal em exercício na direta: teletrabalho depende de autorização da entidade de origem.", "ref": "Art. 9º, § 4º"}, {"texto": "Vigência em 1º/06/2022 (publicado em 18/05/2022); adequação do teletrabalho no exterior até 1º/12/2022.", "ref": "Arts. 18 e 20"}], "erros_frequentes": [{"texto": "Pensar que o PGD só abrange teletrabalho: há também modalidade presencial com controle por entregas.", "ref": "Arts. 3º, § 1º, e 6º"}, {"texto": "Supor que a opção pelo teletrabalho pode gerar custos à administração: é vedado aumento de despesa.", "ref": "Art. 9º, § 7º"}, {"texto": "Achar que o teletrabalho no exterior altera vantagens: mantêm-se as regras como se o servidor estivesse no território nacional.", "ref": "Art. 12, VII"}], "relacoes": [{"texto": "Lei 8.112/1990, art. 19 (jornada) fundamenta o decreto; arts. 36, 84, 95 e 96 são referidos nas hipóteses de teletrabalho no exterior.", "ext": false}, {"texto": "A regulamentação operacional do PGD foi detalhada por instruções normativas conjuntas SEGES/SGPRT (MGI), como a IN Conjunta nº 24/2023, editadas com base no art. 16.", "ext": true}], "perguntas": [{"p": "O que é o PGD?", "r": "Instrumento de gestão que disciplina o desenvolvimento e a mensuração das atividades dos participantes, com foco na entrega por resultados e na qualidade dos serviços.", "ref": "Art. 1º, parágrafo único"}, {"p": "Quais agentes públicos são abrangidos?", "r": "Servidores efetivos e comissionados, empregados públicos em exercício na direta/autárquica/fundacional, contratados temporários (Lei 8.745) e estagiários (Lei 11.788).", "ref": "Art. 2º, § 1º"}, {"p": "A quem o Decreto não se aplica?", "r": "Aos militares das Forças Armadas.", "ref": "Art. 2º, § 2º"}, {"p": "Quem pode autorizar a instituição do PGD?", "r": "Ministros de Estado, dirigentes máximos dos órgãos diretamente subordinados ao PR e autoridades máximas das entidades.", "ref": "Art. 3º, caput"}, {"p": "Como o PGD é instituído?", "r": "Por portaria da autoridade máxima de cada autarquia, fundação ou unidade da direta de nível não inferior a Secretaria, vedada a delegação.", "ref": "Art. 4º, caput"}, {"p": "O que a portaria de instituição deve prever no mínimo?", "r": "Tipos de atividades, quantitativo de vagas, vedações, eventual produtividade adicional no teletrabalho, conteúdo do termo de ciência e responsabilidade e antecedência mínima das convocações.", "ref": "Art. 4º, I a VI"}, {"p": "O PGD é direito do servidor?", "r": "Não. Instituição e manutenção ocorrem no interesse da administração e não constituem direito do agente.", "ref": "Art. 5º"}, {"p": "Quais são as modalidades do PGD?", "r": "Presencial e teletrabalho; este em regime integral ou parcial.", "ref": "Arts. 6º e 9º, II"}, {"p": "Como ocorre a seleção quando há mais interessados que vagas?", "r": "O dirigente da unidade seleciona de modo impessoal, com base nas atividades e na experiência, podendo prever outros critérios fundamentados.", "ref": "Art. 7º"}, {"p": "Quem custeia a estrutura do teletrabalho?", "r": "O próprio agente público, o que deve constar do termo de ciência e responsabilidade.", "ref": "Art. 9º, IV e § 5º"}, {"p": "Em que prazo o teletrabalhador deve retornar ao presencial se excluído do PGD?", "r": "Trinta dias.", "ref": "Art. 10, I"}, {"p": "O que deve conter o plano de trabalho?", "r": "Datas de início e término, atividades, metas e prazos, e termo de ciência e responsabilidade.", "ref": "Art. 11"}, {"p": "Quais os requisitos do teletrabalho no exterior?", "r": "Servidor efetivo com estágio probatório concluído, regime integral, interesse da administração, PGD na unidade, autorização específica, prazo determinado, manutenção das regras de vantagens e substituição a uma das hipóteses do inciso VIII.", "ref": "Art. 12"}, {"p": "Qual o prazo para retorno após revogação do teletrabalho no exterior?", "r": "Dois meses, reduzível mediante justificativa das autoridades do art. 4º.", "ref": "Art. 12, §§ 2º e 3º"}, {"p": "Qual o limite de agentes no exterior por outros critérios e o prazo?", "r": "Até 10% do quantitativo de vagas; prazo de até três anos, renovável por período igual ou inferior.", "ref": "Art. 12, §§ 8º e 9º, I"}, {"p": "O participante do PGD recebe adicional noturno?", "r": "Não, salvo atividade comprovada entre 22h e 5h, com necessidade comprovada e autorização da chefia imediata.", "ref": "Art. 14"}, {"p": "Quais pagamentos são vedados no teletrabalho integral?", "r": "Adicionais de insalubridade, periculosidade ou irradiação ionizante e gratificação por atividades com raios X ou substâncias radioativas.", "ref": "Art. 15"}, {"p": "Qual a referência para diárias e passagens do participante do PGD?", "r": "A localidade de onde exerce as funções remotamente ou, se implicar menor despesa, o endereço do órgão de exercício.", "ref": "Art. 13"}, {"p": "Quando o Decreto entrou em vigor?", "r": "Em 1º de junho de 2022.", "ref": "Art. 20"}, {"p": "Quem edita os atos complementares do PGD?", "r": "Os órgãos centrais do Sipec e do Siorg.", "ref": "Art. 16"}], "cobertura": [{"item": "Objeto e âmbito de aplicação (arts. 1º–2º)", "status": "ok", "obs": ""}, {"item": "Autorização, instituição e manutenção (arts. 3º–5º)", "status": "ok", "obs": ""}, {"item": "Modalidades, seleção e compatibilidade (arts. 6º–8º)", "status": "ok", "obs": ""}, {"item": "Regras especiais do teletrabalho e retorno ao presencial (arts. 9º–10)", "status": "ok", "obs": ""}, {"item": "Formalização da adesão – plano de trabalho (art. 11)", "status": "ok", "obs": ""}, {"item": "Teletrabalho no exterior (art. 12)", "status": "ok", "obs": ""}, {"item": "Diárias, adicional noturno e adicionais vedados (arts. 13–15)", "status": "ok", "obs": ""}, {"item": "Normas complementares, transitórias, revogações e vigência (arts. 16–20)", "status": "ok", "obs": ""}], "nao_verificado": ["Conferido (Planalto, out/2026): o texto oficial do Decreto 11.072/2022 não registra nenhuma alteração posterior; o PDF corresponde à redação vigente.", "Conferido: o art. 1º, caput, grafa 'autárquica e funcional' no PDF e também no texto oficial do Planalto; a ementa e o art. 2º usam 'fundacional' — erro material do próprio Decreto (o âmbito é a administração direta, autárquica e fundacional).", "Conferido: o Decreto não tem capítulo de 'deveres do participante' nem de 'desligamento'; esses pontos estão nos arts. 10 (retorno em 30 dias após exclusão ou suspensão/revogação do PGD) e 11, parágrafo único (comunicar afastamentos). Hipóteses de desligamento (ex.: descumprimento de metas) não constam do Decreto; ficam para os atos complementares do art. 16."]}</script>
+<script>
+(function(){
+const DATA = JSON.parse(document.getElementById('data').textContent);
+const TYPES = {
+  topico:{n:'Tópico / estrutura',s:'■',h:'Títulos, capítulos e seções da norma'},
+  conceito:{n:'Conceito / princípio',s:'◆',h:'Definições, natureza jurídica, princípios'},
+  regra:{n:'Regra / procedimento',s:'▸',h:'Deveres, requisitos, etapas, procedimentos'},
+  classificacao:{n:'Classificação / lista',s:'☰',h:'Espécies, tipos, modalidades, enumerações'},
+  prazo:{n:'Prazo / número',s:'⏱',h:'Prazos, idades, percentuais, valores, quóruns, fórmulas'},
+  excecao:{n:'Exceção / vedação',s:'✖',h:'Exceções, proibições, limites, ressalvas'},
+  competencia:{n:'Órgão / competência',s:'⌂',h:'Sujeitos, autoridades, órgãos, atribuições, composição'},
+  sancao:{n:'Sanção / consequência',s:'⚖',h:'Penalidades, nulidades, responsabilidade'},
+  exemplo:{n:'Exemplo / aplicação',s:'✎',h:'Exemplos e aplicações práticas'},
+  atencao:{n:'Atenção / pegadinha',s:'⚠',h:'Alertas e pontos que caem em prova'}
+};
+const LS = (k,v)=>{try{ if(v===undefined) return JSON.parse(localStorage.getItem(DATA.id+':'+k)); localStorage.setItem(DATA.id+':'+k,JSON.stringify(v)); }catch(e){ return null; }};
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const typ = t => TYPES[t] ? t : 'regra';
+const $ = (s,el=document)=>el.querySelector(s);
+
+// theme
+const root=document.documentElement;
+const th=(()=>{try{return localStorage.getItem('mm-theme')}catch(e){return null}})(); if(th) root.dataset.theme=th;
+$('#themeBtn').onclick=()=>{const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; root.dataset.theme = dark?'light':'dark'; try{localStorage.setItem('mm-theme',root.dataset.theme)}catch(e){}};
+
+$('#h-title').textContent = DATA.titulo; $('#h-sub').textContent = DATA.subtitulo||'';
+
+// index nodes with ids
+const maps = DATA.mapas||[];
+maps.forEach(m=>{ (function walk(n,p,d){ n._id=p; n._d=d; (n.filhos||[]).forEach((c,i)=>walk(c,p+'.'+i,d+1)); })(m.raiz,m.id,0); });
+
+const TABS=[['mapas','Mapas'],['legenda','Legenda'],['comparacoes','Comparações'],['pegadinhas','Pegadinhas e erros'],['perguntas','Perguntas'],['relacoes','Relações'],['cobertura','Cobertura'],['naover','Não verificado']];
+const tabsEl=$('#tabs'), main=$('#main');
+TABS.forEach(([k,l])=>{ if(k==='comparacoes' && !(DATA.comparacoes||[]).length) return; if(k==='relacoes' && !(DATA.relacoes||[]).length) return; const b=document.createElement('button'); b.textContent=l; b.dataset.k=k; b.onclick=()=>showTab(k); tabsEl.appendChild(b); const sec=document.createElement('section'); sec.className='tab hidden'; sec.id='tab-'+k; main.appendChild(sec); });
+function showTab(k){ tabsEl.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k)); main.querySelectorAll('.tab').forEach(s=>s.classList.toggle('hidden',s.id!=='tab-'+k)); LS('tab',k); }
+
+// ---------- MAPS ----------
+const T=$('#tab-mapas');
+T.innerHTML = `<div class="panel intro"><div>${esc(DATA.visao_geral||'')}</div><div class="meta">Fonte: ${esc(DATA.fonte||'')}${DATA.versao_fonte?' · '+esc(DATA.versao_fonte):''}</div></div>
+<div class="chips" id="chips"></div><select class="mapsel" id="mapsel" aria-label="Escolher mapa"></select>
+<div class="toolbar">
+ <button class="btn" data-v="mm">Mapa</button><button class="btn" data-v="ol">Lista</button><span class="sep"></span>
+ <button class="btn" data-lv="1">Nível 1</button><button class="btn" data-lv="2">Nível 2</button><button class="btn" data-lv="3">Nível 3</button><button class="btn" data-lv="99">Expandir tudo</button><span class="sep"></span>
+ <input id="q" type="search" placeholder="Buscar em todos os mapas (ex.: prazo, art. 37, estabilidade)"><span class="hits" id="hits"></span>
+</div>
+<div class="maptitle" id="maptitle"></div><div id="view"></div>`;
+let cur = LS('map'); if(!maps.find(m=>m.id===cur)) cur = maps[0] && maps[0].id;
+let view = LS('view') || (innerWidth<700?'ol':'mm');
+let open = new Set(); let query='';
+const chips=$('#chips'), sel=$('#mapsel');
+maps.forEach(m=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=m.titulo; c.onclick=()=>pick(m.id); c.dataset.id=m.id; chips.appendChild(c); const o=document.createElement('option'); o.value=m.id; o.textContent=m.titulo; sel.appendChild(o); });
+sel.onchange=()=>pick(sel.value);
+if(maps.length>12){ chips.style.display='none'; sel.style.display='block'; }
+function setLevel(lv){ open=new Set(); const m=maps.find(x=>x.id===cur); (function w(n){ if(n._d<lv && n.filhos&&n.filhos.length){open.add(n._id); n.filhos.forEach(w);} })(m.raiz); }
+function pick(id){ cur=id; LS('map',id); setLevel(view==='mm'?2:2); render(); chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.id===id)); sel.value=id; const on=chips.querySelector('.chip.on'); if(on) on.scrollIntoView({block:'nearest',inline:'nearest'}); }
+T.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{view=b.dataset.v; LS('view',view); render();});
+T.querySelectorAll('[data-lv]').forEach(b=>b.onclick=()=>{setLevel(+b.dataset.lv); render();});
+let qt; $('#q').oninput=e=>{clearTimeout(qt); qt=setTimeout(()=>search(e.target.value.trim()),200);};
+
+const norm = s => String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+function hl(s){ s=esc(s); if(!query) return s; const nq=norm(query); const ns=norm(s); let out='',i=0,j; while((j=ns.indexOf(nq,i))>-1){ out+=s.slice(i,j)+'<mark>'+s.slice(j,j+nq.length)+'</mark>'; i=j+nq.length; } return out+s.slice(i); }
+function nodeMatch(n){ const nq=norm(query); return norm(n.t).includes(nq)||norm(n.d).includes(nq)||norm(n.ref).includes(nq); }
+function search(q){ query=q; const hits=$('#hits'); if(!q){hits.textContent=''; setLevel(2); render(); return;}
+  // count per map; jump to best map if current has none
+  const counts={}; maps.forEach(m=>{ let c=0; (function w(n){ if(nodeMatch(n))c++; (n.filhos||[]).forEach(w); })(m.raiz); counts[m.id]=c; });
+  const total=Object.values(counts).reduce((a,b)=>a+b,0);
+  if(!counts[cur]){ const best=maps.find(m=>counts[m.id]); if(best){ cur=best.id; sel.value=cur; chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.id===cur)); } }
+  chips.querySelectorAll('.chip').forEach(c=>{ const n=counts[c.dataset.id]; c.textContent=maps.find(m=>m.id===c.dataset.id).titulo+(n?` (${n})`:''); });
+  hits.textContent = total? `${total} resultado(s); ${counts[cur]||0} neste mapa` : 'nenhum resultado';
+  open=new Set(); const m=maps.find(x=>x.id===cur);
+  (function w(n,anc){ if(nodeMatch(n)) anc.forEach(a=>open.add(a)); (n.filhos||[]).forEach(c=>w(c,anc.concat(n._id))); })(m.raiz,[]);
+  render();
+}
+function inner(n){ const t=typ(n.tipo); const k=(n.filhos||[]).length;
+  return `<div class="t"><span class="sym" title="${esc(TYPES[t].n)}">${TYPES[t].s}</span>${hl(n.t)}${n.ref?`<span class="ref">${hl(n.ref)}</span>`:''}${n.ext?'<span class="ext" title="Complementação externa: não consta no PDF">✚ externo</span>':''}${k&&!open.has(n._id)?`<span class="more">+${k}</span>`:''}</div>${n.d?`<div class="d">${hl(n.d)}</div>`:''}`; }
+function ol(n){ const t=typ(n.tipo); const k=(n.filhos||[]).length; const isOpen=open.has(n._id);
+  return `<li class="lvl${Math.min(n._d,2)}"><div class="on-row"><button class="tog ${k?'':'none'}" data-id="${n._id}" aria-label="${isOpen?'Recolher':'Expandir'}">${isOpen?'▼':'▶'}</button><div class="box" style="--c:var(--c-${t})">${inner(n)}</div></div>${k&&isOpen?`<ul class="ol">${n.filhos.map(ol).join('')}</ul>`:''}</li>`; }
+function mm(n){ const t=typ(n.tipo); const k=(n.filhos||[]).length; const isOpen=open.has(n._id);
+  return `<li><div class="node ${k?'has':''} ${n._d===0?'root':''}" data-id="${n._id}" style="--c:var(--c-${t})" title="${k?(isOpen?'Clique para recolher':'Clique para expandir'):''}">${inner(n)}</div>${k&&isOpen?`<ul>${n.filhos.map(mm).join('')}</ul>`:''}</li>`; }
+function render(){ const m=maps.find(x=>x.id===cur); if(!m) return; $('#maptitle').textContent=m.titulo;
+  T.querySelectorAll('[data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===view));
+  const v=$('#view');
+  if(view==='ol'){ v.innerHTML=`<div class="panel"><ul class="ol">${ol(m.raiz)}</ul></div>`; }
+  else { v.innerHTML=`<div class="mmwrap"><div class="mm"><ul>${mm(m.raiz)}</ul></div></div>`; }
+}
+$('#view').addEventListener('click',e=>{ const el=e.target.closest('[data-id]'); if(!el) return; if(el.classList.contains('node')&&!el.classList.contains('has')) return; const id=el.dataset.id; open.has(id)?open.delete(id):open.add(id); render(); });
+if(cur){ pick(cur); }
+
+// ---------- LEGEND ----------
+$('#tab-legenda').innerHTML = `<div class="panel"><h2>Cores e símbolos (categoria de cada informação)</h2><div class="grid">${Object.entries(TYPES).map(([k,v])=>`<div class="leg" style="--c:var(--c-${k})"><div class="sw">${v.s}</div><div><b>${v.n}</b><br><small>${v.h}</small></div></div>`).join('')}</div></div>
+<div class="panel"><h2>Outros marcadores</h2><div class="grid">
+<div class="leg"><span class="ref" style="margin:0">Art. 5º, II</span><div><small>Dispositivo exato da norma de onde a informação foi extraída.</small></div></div>
+<div class="leg"><span class="ext" style="margin:0">✚ externo</span><div><small>Complementação que <b>não está no PDF</b> (contexto, doutrina, jurisprudência). Confira antes de usar em prova.</small></div></div>
+<div class="leg"><span class="more" style="color:var(--accent);font-weight:600">+4</span><div><small>Nó recolhido; mostra quantos itens há dentro. Clique para expandir.</small></div></div>
+<div class="leg"><div><small><b>Mapa geral</b> é o primeiro da lista e dá a visão do todo. Os <b>mapas complementares</b> detalham cada título ou capítulo. A busca procura em todos os mapas.</small></div></div>
+</div></div>`;
+
+// ---------- COMPARISONS ----------
+if($('#tab-comparacoes')) $('#tab-comparacoes').innerHTML = (DATA.comparacoes||[]).map(c=>`<div class="panel"><h2>${esc(c.titulo)}</h2><div class="tblwrap"><table><thead><tr>${(c.colunas||[]).map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${(c.linhas||[]).map(r=>`<tr>${r.map((x,i)=>i?`<td>${esc(x)}</td>`:`<th>${esc(x)}</th>`).join('')}</tr>`).join('')}</tbody></table></div></div>`).join('');
+
+// ---------- TRAPS ----------
+const lst=(a,c)=>(a||[]).map(x=>`<div class="item" style="--c:var(--c-${c})">${esc(x.texto)}${x.ref?`<span class="ref">${esc(x.ref)}</span>`:''}${x.ext?'<span class="ext" title="Complementação externa: não consta no PDF">✚ externo</span>':''}</div>`).join('');
+$('#tab-pegadinhas').innerHTML = `<div class="panel"><h2>⚠ Pegadinhas comuns em prova</h2>${lst(DATA.pegadinhas,'atencao')||'<p>—</p>'}</div><div class="panel"><h2>✖ Erros frequentes</h2>${lst(DATA.erros_frequentes,'excecao')||'<p>—</p>'}</div>`;
+
+// ---------- RELATIONS ----------
+if($('#tab-relacoes')) $('#tab-relacoes').innerHTML = `<div class="panel"><h2>Relações com outros assuntos</h2>${(DATA.relacoes||[]).map(r=>`<div class="item" style="--c:var(--c-competencia)">${esc(r.texto)}${r.ext?'<span class="ext">✚ externo</span>':''}</div>`).join('')}</div>`;
+
+// ---------- QUESTIONS ----------
+const QS=DATA.perguntas||[]; let qst=LS('qs')||{};
+function renderQ(){ const ok=Object.values(qst).filter(v=>v==='ok').length, bad=Object.values(qst).filter(v=>v==='bad').length;
+ $('#tab-perguntas').innerHTML = `<div class="panel"><h2>Perguntas para testar a compreensão</h2><div class="score">${QS.length} perguntas · ✔ ${ok} acertos · ✖ ${bad} a revisar <button class="btn" id="qreset">Zerar</button> <button class="btn" id="qall">Mostrar todas as respostas</button></div>
+ ${QS.map((q,i)=>`<div class="q ${qst[i]||''}" data-i="${i}"><div class="qrow"><div><b>${i+1}.</b> ${esc(q.p)}</div><div class="qbtns"><button class="btn" data-a="show">Resposta</button></div></div><div class="a">${esc(q.r)}${q.ref?`<span class="ref">${esc(q.ref)}</span>`:''}${q.ext?'<span class="ext" title="Complementação externa: não consta no PDF">✚ externo</span>':''}<div style="margin-top:8px"><button class="btn" data-a="ok">✔ Acertei</button> <button class="btn" data-a="bad">✖ Revisar</button></div></div></div>`).join('')}</div>`;
+ $('#qreset').onclick=()=>{qst={};LS('qs',qst);renderQ();};
+ $('#qall').onclick=()=>document.querySelectorAll('.q').forEach(x=>x.classList.add('open'));
+}
+$('#tab-perguntas').addEventListener('click',e=>{ const b=e.target.closest('[data-a]'); if(!b) return; const q=b.closest('.q'); const i=q.dataset.i; if(b.dataset.a==='show') q.classList.toggle('open'); else { qst[i]=b.dataset.a; LS('qs',qst); q.classList.remove('ok','bad'); q.classList.add(b.dataset.a); } });
+renderQ();
+
+// ---------- COVERAGE ----------
+let cov=LS('cov')||{};
+const C=DATA.cobertura||[]; const nok=C.filter(c=>c.status==='ok').length;
+$('#tab-cobertura').innerHTML = `<div class="panel"><h2>Lista de verificação da cobertura</h2><p class="score">${nok} de ${C.length} divisões com cobertura completa. A coluna “Estudei” é sua: marque conforme revisar (fica salva neste navegador).</p><div class="tblwrap"><table><thead><tr><th>Estudei</th><th>Divisão do documento</th><th>Status no mapa</th><th>Observação</th></tr></thead><tbody>${C.map((c,i)=>`<tr><td><input type="checkbox" data-c="${i}" ${cov[i]?'checked':''} aria-label="Estudei"></td><td>${esc(c.item)}</td><td><span class="st ${esc(c.status)}">${c.status==='ok'?'completo':c.status==='parcial'?'parcial':'não coberto'}</span></td><td>${esc(c.obs||'')}</td></tr>`).join('')}</tbody></table></div></div>`;
+$('#tab-cobertura').addEventListener('change',e=>{ const i=e.target.dataset.c; if(i==null) return; cov[i]=e.target.checked; LS('cov',cov); });
+
+// ---------- UNVERIFIED ----------
+$('#tab-naover').innerHTML = `<div class="panel"><h2>Conteúdo que não pôde ser verificado, lacunas e ambiguidades</h2>${(DATA.nao_verificado||[]).map(x=>`<div class="item" style="--c:var(--c-atencao)">${esc(x)}</div>`).join('')||'<p>—</p>'}</div>`;
+
+showTab(LS('tab')&&document.getElementById('tab-'+LS('tab'))?LS('tab'):'mapas');
+})();
+</script>
+</body>
+</html>
